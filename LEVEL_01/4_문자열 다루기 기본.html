@@ -32,7 +32,7 @@
   let answer = true
   let sLn = s.length;
     
-  ((sLn === 4 || sLn === 6) && !isNaN(s)) ? answer = true : answer = false  
+  ((sLn === 4 || sLn === 6) && !isNaN(s)) && !s.includes('e') ? answer = true : answer = false  
 
     return answer
   

@@ -40,6 +40,7 @@
     /*
       isNaN -> is not a number (문자면 true값을 준다.)
     */
+
   
   }
 
@@ -60,5 +61,29 @@ function alpha_string46(s) {
     https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/%EC%A0%95%EA%B7%9C%EC%8B%9D
 */
 console.log(alpha_string46('a234'));
+</script>
+
+<script>
+  function solution(s) {
+      var answer = true;
+
+      (parseInt(s) == s && (s.length == 4 || s.length == 6)) ? answer = true : answer = false;
+
+
+      return answer;
+    }
+  /* 
+    parseInt() -> 문자열 인자의 구문을 분석해 특정 진수의 정수를 반환
+    
+    <구문>
+    parseInt(string, radix)
+    string : 분석할 값 (만약 문자열이 아니면 문자열로 변환한다.)
+    radix : string이 표현하는 정수를 나타내는 2~36사이의 진수
+
+    <반환값>
+    : 주어진 문자열로부터 분석한 정수. 첫글자를 숫자로 변환할 수 없다면 NaN을 반환합니다.
+
+    https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/parseInt
+*/
 </script>
 </html>

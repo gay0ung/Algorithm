@@ -34,16 +34,39 @@
   <!-- 내풀이 -->
   <script>
     function solution(s) {
-            var answer = true;
+      // 영문인지 확인하는 함수
+          var uniCode = s.charCodeAt(0);
+          if (!(65 <= uniCode && uniCode <= 90) && !(97 <= uniCode && uniCode <= 122)) return false
 
-            // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-            console.log('Hello Javascript')
+          s= s.toLowerCase();
+          var numP = s.match(/p/g) ;
+          var numY = s.match(/y/g) ;
 
-            return answer;
+          return ((numP == null && numY == null) || (numP.length === numY.length) ) ? true :false
+
         }
+        console.log(solution('ppyysodiuf'));
+        
+        /*
+          carCodeAt()
+          : 주어진 인덱스에 대한 UTF-16코드를 나타내는 0부터 65535사이의 정수를 반환한다.
+        */
+        /*
+          match()
+          검색할 단어, 찾고 싶은 단어가 있는 경우 해당 텍스트 문구에 포함되어 있는지 확인할수 있다.
+          정규표현식을 사용하여 특정 패턴을 검색하는것도 가능하다.
+        */
   </script>
 
   <!-- 다른사람풀이 -->
   <script>
+    function solution2(s) {
+      return (s.match(/p/ig) == null && s.match(/y/ig)== null) || (s.match(/p/ig).length === s.match(/y/ig).length) ? true : false
+
+      }
+      // 정규식 a/i 는 문자열 'a' 또는 "A"와 일치하다.
+    console.log(solution2("pPoooyY"))
+    console.log(solution2("Pyy"))
+    console.log(solution2("xicuv"))
   </script>
 </html>

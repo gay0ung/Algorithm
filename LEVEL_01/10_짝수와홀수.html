@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10.짝수와홀수</title>
+  </head>
+
+  <body>
+    <h2>짝수와홀수</h2>
+    <div>
+      <h4>
+        <문제설명>
+      </h4>
+      <p>
+        정수 num이 짝수일 경우 Even을 반환하고 홀수인 경우 Odd를 반환하는 함수,
+        solution을 완성해주세요.
+      </p>
+    </div>
+    <div>
+      <h4>
+        <제한조건>
+      </h4>
+      <ul>
+        <li>num은 int 범위의 정수입니다.</li>
+        <li>0은 짝수입니다.</li>
+      </ul>
+    </div>
+  </body>
+
+  <!-- 내풀이 -->
+  <script>
+    function solution(num) {
+      // 0 = even
+      // odd 로 return해라
+
+      console.log(num % 2);
+      return num % 2 === 0 ? "Even" : "Odd";
+    }
+    console.log(solution([2, 3, 4, 5, 6]));
+  </script>
+
+  <!-- 다른사람풀이 -->
+  <script></script>
+</html>

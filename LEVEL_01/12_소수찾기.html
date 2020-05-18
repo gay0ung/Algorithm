@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12.소수찾기</title>
+</head>
+
+<body>
+    <h2>소수찾기</h2>
+    <div>
+        <h4>
+            <문제설명>
+        </h4>
+        <p>
+            1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요.</br>
+            
+            소수는 1과 자기 자신으로만 나누어지는 수를 의미합니다.</br>
+            (1은 소수가 아닙니다.)</br>
+          
+        </p>
+    </div>
+    <div>
+        <h4>
+            <제한조건>
+        </h4>
+        <ul>
+            <li>n은 2이상 1000000이하의 자연수입니다.</li>
+        </ul>
+    </div>
+</body>
+
+<!-- 내풀이 -->
+<script>
+    function solution(n) {
+        let answer = []
+
+        // 1을 제외하고 2부터 인자로 받은 n까지 for문을 돌린다.
+        for(let  i = 2; i <= n; i++){
+           /*
+            1. 루프가 돌아가고 있는 숫자 i보다 작은 수까지 새로운 for문을 돌린다.
+            2. 1과 위 루프가 돌고 있는 수 i를 제외한 이유는 1이외에 나눠 떨어지는 수가 있는지 판별하기 위해서다.
+           */
+            for(let j = 2; j < i; j++){
+                // 1과 자신 이외에 나누어 떨어지는 수가 있는지 확인.
+                if(i % j === 0) if(!answer.includes(i)) answer.push(i)
+                // i가 여러 수로 떨어질 수도 있기 때문에 중복으로 not배열에 push한다.
+                // 이것을 방지하기 위해 다시 조건문을 걸어 answer에 해당 i가 있는지 확인한후 push해준다.
+            }
+        }
+        return n - 1 - answer.length
+        // 1을 제외한 2부터 n의 개수 n-1
+        // 소수가 아닌 수를 모은 배열 answer의 length
+        // 위 두수를 빼면 소수의 갯수
+       
+    }
+        
+    // 실행은 되지만 테스트 실패
+    //console.log(solution(20))
+</script>
+
+<!-- 다른사람풀이 -->
+<script>
+    function solution2(n) {
+        let answer = 0; 
+        let arr = []; 
+
+        for (let i = 2; i <= n; i++) { arr[i] = i; } 
+
+        for (let i = 2; i <= n; i++) { 
+            // continue -> 0 부터 실행한다.
+            if (arr[i] === 0) continue; 
+            for (let j = i + i; j <= n; j += i) { arr[j] = 0; } 
+        }
+
+        for (let i = 2; i <= n; i++) { if (arr[i] !== 0) answer++; } return answer 
+    }
+    //console.log("solution2: " + solution2(10));
+    
+</script>
+
+<script>
+    function solution3(n) {
+        const s = new Set();
+        for (let i = 1; i <= n; i += 2) {
+            s.add(i);
+            //console.log(i);
+            // {1,3,5,7,9}
+        }
+        s.delete(1);
+        // {3,5,7,9}
+        s.add(2);
+        // {2,3,5,7,9}
+        for (let j = 3; j < Math.sqrt(n); j++) {
+           // console.log(j);
+            //{3}
+            
+            if (s.has(j)) {
+                for (let k = j * 2; k <= n; k += j) {
+                    console.log(k);
+                   // {6,9}
+                    
+                    s.delete(k);
+                }
+            }
+        }
+        return s.size;
+        // s안에 있는 요소의 갯수 {2,3,5,7} = 4 를 반환한다.
+    }
+    console.log(solution3(10));
+
+    /*
+       ** new Set()
+        -> 데이터 타입
+        -> 중복되는 값을 가지지 않는 값들의 리스트(순서가 존재하지 않는다, 중복됬을시 알아서 하나만 나타낸다.)
+
+        https://medium.com/@khwsc1/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-es6-set%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90-9b7294dfba99
+
+       ** Math.squt(x)
+        -> 숫자의 제곱근 반환
+        -> x : 숫자
+
+        <반환값>
+        -> 주어진 숫자에 루트를 씌운다. 만약 숫자가 음수이면 NaN를 반환한다.
+    */
+    
+</script>
+
+</html>

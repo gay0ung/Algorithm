@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.박수박수박수박?</title>
+</head>
+
+<body>
+    <h2>박수박수박수박</h2>
+    <div>
+        <h4>
+            <문제설명>
+        </h4>
+        <p>
+            길이가 n이고, 수박수박수박수....와 같은 패턴을 유지하는 문자열을 리턴하는 함수, solution을 완성하세요. </br>예를들어 n이 4이면 수박수박을 리턴하고 3이라면 수박수를 리턴하면 됩니다.
+        </p>
+    </div>
+    <div>
+        <h4>
+            <제한조건>
+        </h4>
+        <ul>
+            <li>n은 길이 10,000이하인 자연수입니다.</li>
+        </ul>
+    </div>
+</body>
+
+<!-- 내풀이 -->
+<script>
+    function solution(n) {
+        let answer = []
+        for(let i = 1; i <= n; i++){
+            answer.push(i)
+            i % 2 === 0 
+             ? answer.splice(answer.indexOf(i),1,"박") 
+             : answer.splice(answer.indexOf(i), 1, "수")
+        }
+      return answer.join("")       
+    }
+    console.log(solution(6));
+    
+</script>
+
+<!-- 다른사람풀이 -->
+<script>
+    function waterMelon(n) {
+        var result = "";
+        for (var i = 1; i <= n; i++) {
+            i % 2 === 1 ? result += "수" : result += "박"
+        }
+        return result;
+    }
+    console.log(waterMelon(4));
+    
+</script>
+
+</html>

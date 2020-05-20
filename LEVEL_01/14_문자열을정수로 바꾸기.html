@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14.문자열을 정수로 바꾸기</title>
+</head>
+
+<body>
+    <h2></h2>
+    <div>
+        <h4>
+            <문제설명>
+        </h4>
+        <p>
+            문자열 s를 숫자로 변환한 결과를 반환하는 함수, solution을 완성하세요.
+        </p>
+    </div>
+    <div>
+        <h4>
+            <제한조건>
+        </h4>
+        <ul>
+            <li>s의 길이는 1 이상 5이하입니다.</li>
+            <li>s의 맨앞에는 부호(+, -)가 올 수 있습니다</li>
+            <li>s는 부호와 숫자로만 이루어져있습니다.</li>
+            <li>s는 0으로 시작하지 않습니다.</li>
+        </ul>
+    </div>
+</body>
+
+<!-- 내풀이 -->
+<script>
+    function solution(s) {
+        if (s.length >= 1 && s.length <= 5) {
+            return s < 0 ? s = Math.abs(s) * -1 : s = Math.abs(s)
+        }
+    }
+    console.log(solution("-1234"));
+    
+</script>
+
+<!-- 다른사람풀이 -->
+<script>
+    function strToInt(str) {
+        return +str;
+    }
+    console.log(strToInt("-2345"))
+    //문자열과 숫자열의 사칙연산은 숫자가 나오게 된다.
+</script>
+
+<script>
+    function strToInt2(str) {
+        return str / 1
+    }
+    console.log(strToInt2("-8947"))
+</script>
+
+</html>

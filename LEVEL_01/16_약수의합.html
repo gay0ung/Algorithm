@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>16.약수의합</title>
+</head>
+
+<body>
+    <h2>약수의합</h2>
+    <div>
+        <h4>
+            <문제설명>
+        </h4>
+        <p>
+            정수 n을 입력받아 n의 약수를 모두 더한 값을 리턴하는 함수, solution을 완성해주세요.
+        </p>
+    </div>
+    <div>
+        <h4>
+            <제한조건>
+        </h4>
+        <ul>
+            <li>n은 0 이상 3000이하인 정수입니다.</li>
+        </ul>
+    </div>
+</body>
+
+<!-- 내풀이 -->
+<script>
+    function divisors(num) {
+        var answer = 0
+        for(let i = 1; i <= num; i++){
+            if(num % i == 0) {
+                //console.log(i);
+                answer += i
+            }
+        }
+        return answer 
+    }
+    console.log(divisors(12));
+    
+</script>
+
+<!-- 다른사람풀이 -->
+<script>
+    function solution(n, a = 0, b = 0) {
+        return n <= a / 2 ? b : solution(n, a + 1, b += n % a ? 0 : a);
+    }
+    console.log(solution(12));
+    
+</script>
+
+</html>

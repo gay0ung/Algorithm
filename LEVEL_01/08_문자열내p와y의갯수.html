@@ -38,7 +38,7 @@
           var uniCode = s.charCodeAt(0);
           if (!(65 <= uniCode && uniCode <= 90) && !(97 <= uniCode && uniCode <= 122)) return false
 
-          s= s.toLowerCase();
+          s = s.toLowerCase();
           var numP = s.match(/p/g) ;
           var numY = s.match(/y/g) ;
 
@@ -64,6 +64,8 @@
       return (s.match(/p/ig) == null && s.match(/y/ig)== null) || (s.match(/p/ig).length === s.match(/y/ig).length) ? true : false
 
       }
+      // 테스트 2,3 번 오류가 난다.
+      
       // 정규식 a/i 는 문자열 'a' 또는 "A"와 일치하다.
     console.log(solution2("pPoooyY"))
     console.log(solution2("Pyy"))

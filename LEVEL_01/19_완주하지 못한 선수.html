@@ -42,11 +42,6 @@
 // 소문자 이름
 
 function solution(participant, completion) {
-
-    console.log(participant);
-    
-    console.log(completion);
-
     if(completion.length = participant.length - 1) {
         let donT = participant.filter(doNot => {
             
@@ -73,6 +68,8 @@ function solution2(participant, completion) {
     completion.sort();
 
     for (let i =0; i < participant.length; i++) {
+        console.log(participant[i] !== completion[i]);
+        
         if (participant[i] !== completion[i]) return participant[i];
     }
 }

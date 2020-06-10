@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <h2></h2>
+    <div>
+      <h4>
+        <문제설명>
+      </h4>
+      <p>
+        양의 정수 x가 하샤드 수이려면 x의 자릿수의 합으로 x가 나누어져야 합니다. 
+        </br>예를 들어 18의 자릿수 합은 1+8=9이고, 18은 9로 나누어 떨어지므로 18은 하샤드 수입니다.
+        </br>자연수 x를 입력받아 x가 하샤드 수인지 아닌지 검사하는 함수, solution을 완성해주세요.
+        
+      </p>
+    </div>
+    <div>
+      <h4>
+        <제한조건>
+      </h4>
+      <ul>
+        <li>x는 1 이상, 10000 이하인 정수입니다.</li>
+      </ul>
+    </div>
+  </body>
+
+  <!-- 내풀이 -->
+  <script>
+    /*하샤드  
+    
+       AB
+      ----
+       A+B
+          ---> 이값이 0(즉 나누어 떨어지는 수 이다.)
+    */           
+
+    function solution(x) {
+        let answer = 0
+        //console.log(String(x));
+        //let num  = String(x);
+        let num  = String(x).split('');
+        // split을 추가 하므로서 num2에성의 오류를 해결할수 있었다.
+
+        for(let i = 0; i < num.length; i++){
+
+            // let num2 = Number(num[i])
+            //answer += num2[i]
+            answer += Number(num[i]) 
+   
+        }
+        return x % answer == 0 ? true : false
+     
+    }
+    console.log(solution(36));
+    
+  </script>
+
+  <!-- 다른사람풀이 -->
+  <script>
+    function Harshad(n) {
+      return !(n % (n + '').split('').reduce(function (i, sum) { return +sum + +i; }));
+    }
+    console.log(Harshad(18))
+
+    /*
+      reduce()
+      :배열의 값을 한개로 감소시킨다.
+      : 배열 자체를 변형한다.
+      : ( 객체일수도 있고 또다른 배열 일수도 있다.)
+
+      ** 리듀서함수는 4개의 인자를 가진다.
+      -누산기accumulator (acc)
+      -현재 값 (cur)              _option
+      -현재 인덱스 (idx)          _option
+      -원본 배열 (src)            _option
+
+      https://niceman.tistory.com/79
+      https://ratseno.tistory.com/25
+    */
+  </script>
+</html>

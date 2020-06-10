@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>24.모의고사</title>
+</head>
+
+<body>
+    <h2>모의고사</h2>
+    <div>
+        <h4>
+            <문제설명>
+        </h4>
+        <p>
+            수포자는 수학을 포기한 사람의 준말입니다. 수포자 삼인방은 모의고사에 수학 문제를 전부 찍으려 합니다. </br>수포자는 1번 문제부터 마지막 문제까지 다음과 같이 찍습니다.
+            </br></br>
+            1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...</br>
+            2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5, ...</br>
+            3번 수포자가 찍는 방식: 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, ...</br>
+            </br>
+            1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열 answers가 주어졌을 때,
+            </br> 가장 많은 문제를 맞힌 사람이 누구인지 배열에 담아 return 하도록 solution 함수를 작성해주세요.
+            
+        </p>
+    </div>
+    <div>
+        <h4>
+            <제한조건>
+        </h4>
+        <ul>
+            <li>시험은 최대 10,000 문제로 구성되어있습니다.</li>
+            <li>문제의 정답은 1, 2, 3, 4, 5중 하나입니다.</li>
+            <li>가장 높은 점수를 받은 사람이 여럿일 경우, return하는 값을 오름차순 정렬해주세요.</li>
+        </ul>
+    </div>
+</body>
+
+<!-- 내풀이 -->
+<script>
+    function solution(answers) {
+        let answer = []
+        let student1 = [1,2,3,4,5], // 5
+            student2 = [2,1,2,3,2,4,2,5],  // 8
+            student3 = [3,3,1,1,2,2,4,4,5,5] // 10
+
+        function max(a, b) {  // 오름 차순 함수
+            return a > b ? a : b
+        }
+
+        let score = 0;
+        let cnt = [0,0,0]   //수포자들 점수 나열 배열
+
+        for( let i = 0; i < answers.length; i++){
+            if(student1[i % 5] === answers[i]) cnt[0]++;
+            if(student2[i % 8] === answers[i]) cnt[1]++;
+            if(student3[i % 10] === answers[i]) cnt[2]++;   
+            // 답과 맞는 다면 +1해준다.
+        }
+        
+        score = max(max(cnt[0], cnt[1]), cnt[2]) // 최대값을 입력한다. 
+        // --> 이부분이 이해가 가지 않는다 왜 max함수 안에 max함수를 넣어 주는 걸까?
+       
+        let top = 0;
+
+        for(let i =0; i< 3; i++){
+            if(cnt[i] === score){
+                answer[top] = i + 1;
+                top += 1;
+            }
+               
+        }
+        return answer
+   
+    }
+    console.log(solution([1,2,3,4,5]));
+    
+
+</script>
+
+<!-- 다른사람풀이 -->
+<script>
+function solution2(answers){
+    let answer=[],
+        s1 = [1, 2, 3, 4, 5],
+        s2 = [2, 1, 2, 3, 2, 4, 2, 5],
+        s3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
+
+    let s1count = answers.filter((a,i) => a === s1[i%s1.length]).length ;
+    let s2count = answers.filter((a,i) => a === s2[i%s2.length]).length ;
+    let s3count = answers.filter((a,i) => a === s3[i%s3.length]).length ;
+    let max = Math.max(s1count, s2count, s3count)
+
+    if (s1count === max) { answer.push(1) };
+    if (s2count === max) { answer.push(2) };
+    if (s3count === max) { answer.push(3) };
+
+    return answer;
+}
+console.log(solution2([1, 2, 3, 4, 5]));
+
+// 왜 push에 각각 1,2,3을 넣는 걸까?
+
+
+</script>
+
+</html>

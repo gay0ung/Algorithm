@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>21.자연수 뒤집어 배열로 만들기</title>
+</head>
+
+<body>
+    <h2>자연수 뒤집어 배열로 만들기</h2>
+    <div>
+        <h4>
+            <문제설명>
+        </h4>
+        <p>
+            자연수 n을 뒤집어 각 자리 숫자를 원소로 가지는 배열 형태로 리턴해주세요. 예를들어 n이 12345이면 [5,4,3,2,1]을 리턴합니다.
+            </br>
+        </p>
+    </div>
+    <div>
+        <h4>
+            <제한조건>
+        </h4>
+        <ul>
+            <li>n은 10,000,000,000이하인 자연수입니다.</li>
+        </ul>
+    </div>
+</body>
+
+<!-- 내풀이 -->
+
+<script>
+// 숫자를 문자열로 바꿔준다.
+// 내림차순으로 정렬해준다 (a,b) => retrun b - a 해준다. 
+
+function solution(n) {
+    let arr = []
+    let numStr = n.toString().split('')
+
+    for(let i = numStr.length-1; i >= 0; i--){
+        arr.push(Number(numStr[i]))
+    }
+
+   return arr
+     //return arr.sort((a,b) =>  b - a)
+    
+}
+// 실행은 되나 테스트 오류가 난다.
+
+// numStr에 split('')을 준뒤, sort함수를 하용하는 대신 for문을 --해줘서 내림차순으로 정렬해주니 해결됬다.
+console.log(solution(12345));
+
+</script>
+
+<!-- 다른사람풀이 -->
+<script>
+function solution2(n) {
+    console.log((n + '').split('').reverse());
+    
+    return (n + '').split('').reverse().map(n => parseInt(n));
+
+    // n+'' -> 문자열로 바꿔준다.
+    // split("") -> 문자열을 배열에 담아 준다 ['4','5','6','7','8']
+    // reverse() -> ['8','7','6','5','4']
+    // 
+}
+console.log(solution2(45678));
+
+</script>
+
+</html>

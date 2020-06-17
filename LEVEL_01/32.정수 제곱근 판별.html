@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+</head>
+
+<body>
+    <h2></h2>
+    <div>
+        <h4>
+            <문제설명>
+        </h4>
+        <p>
+            임의의 양의 정수 n에 대해, n이 어떤 양의 정수 x의 제곱인지 아닌지 판단하려 합니다.</br>
+            n이 양의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고,</br> n이 양의 정수 x의 제곱이 아니라면 -1을 리턴하는 함수를 완성하세요.
+            
+        </p>
+    </div>
+    <div>
+        <h4>
+            <제한조건>
+        </h4>
+        <ul>
+            <li>n은 1이상, 50000000000000 이하인 양의 정수입니다.</li>
+        </ul>
+    </div>
+</body>
+
+<!-- 내풀이 -->
+<script>
+    // 제곱근이란? n = ±x² => ex) 9의 제곱근은 ±3² 이다. 루트 a = ±b
+    // '양의 정수' 일때 x+1 제곱 리턴 
+    // x의 제곱근이 아니면 -1 리턴.
+function solution(n) {
+    //console.log();
+    let msqrt = Math.sqrt(n);
+
+    // console.log(msqrt);
+    // console.log(msqrt % 1 ==0);
+    
+    return n > 0 && msqrt % 1 == 0 ? Math.pow(msqrt+1,2) : -1
+    //if( n < 0) return alert('양수로 바꿔주세요')  
+    
+    //  if(n % 1 == 0) {
+    //      return Math.pow(n+1,2);
+    //  } else {return -1}
+}
+console.log(solution(36));
+
+/*
+ Math.sqrt()
+    :숫자의 제곱근을 반환.
+    :음수일 경우는 NaN을 반환.
+ Math.pow(n, 제곱승)
+    : 제곱의 값을 구하는 함수
+*/
+</script>
+
+<!-- 다른사람풀이 -->
+<script>
+    // 내장 함수를 사용하지 않고 풀어쓴 방식.
+function nextSqaure(n) {
+        var result = 0;
+        var x = 0;
+        while (x * x < n) {
+            x++;
+        }
+        if (x * x == n) {
+            x++;
+            result = x * x;
+        } else {
+            result = 'no';
+        }
+
+        return result;
+    }
+
+    // 아래는 테스트로 출력해 보기 위한 코드입니다.
+    console.log("결과 : " + nextSqaure(121));
+</script>
+
+</html>

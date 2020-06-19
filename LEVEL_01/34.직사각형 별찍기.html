@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>34.직사각형 별찍기
+</title>
+</head>
+
+<body>
+    <h2>직사각형 별찍기
+</h2>
+    <div>
+        <h4>
+            <문제설명>
+        </h4>
+        <p>
+            이 문제에는 표준 입력으로 두 개의 정수 n과 m이 주어집니다.</br>
+            별(*) 문자를 이용해 가로의 길이가 n, 세로의 길이가 m인 직사각형 형태를 출력해보세요.</br>
+           
+        </p>
+    </div>
+    <div>
+        <h4>
+            <제한조건>
+        </h4>
+        <ul>
+            <li>n과 m은 각각 1000 이하인 자연수입니다.</li>
+        </ul>
+    </div>
+</body>
+
+<!-- 내풀이 -->
+<script>
+// 가로 갯수: n
+// 새로 갯수: n
+process.stdin.setEncoding('utf8');
+process.stdin.on('data', data => {
+    const n = data.split(" ");
+    const a = Number(n[0]); 
+    const b = Number(n[1]);
+
+    let answer = ''
+    for(let i=0; i < b; i++){
+        answer += "*".repeat(a) + "\n"
+    }
+    console.log(answer);
+  
+});
+/*
+    공백(\t)
+    줄바꿈(\n)
+*/
+/*
+    값은 나왔지만 오류가 떠서 보니 줄바꿈을 해줘야 하는 기능을 넣어야 했다.
+
+    <마지막 결과를 도출하하려 했을때.>
+    1. 처음 retrun을 했다가 값이 안나왔다.
+    2. 아무것도 주지 않았더니 output값이 없다고 나왔다.
+    3. console.log(answer) 을해주니 통과 된다.? 
+        -> (답이 나오지 않아 다른사람의 코드를 보니 console.log로 답을 도출했었다.)
+
+    *** 표준입력의 시스템을 잘 모르겠다. 공부해보자.
+*/
+</script>
+
+<!-- 다른사람풀이 -->
+<script>
+    // 내부api대신 for문 중첩
+    process.stdin.setEncoding('utf8');
+    process.stdin.on('data', data => {
+        const n = data.split(" ");
+        const a = Number(n[0]);
+        const b = Number(n[1]);
+
+        let answer = ''
+        for (let i = 0; i < b; i++) {
+            for(let j = 0; j < a; j++){
+                answer += "*"
+            }
+           answer += "\n" //--> 사각형을 만들어야 하므로 
+        }
+        console.log(answer);
+
+    });
+</script>
+
+</html>

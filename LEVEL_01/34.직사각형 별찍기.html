@@ -34,7 +34,7 @@
 <!-- 내풀이 -->
 <script>
 // 가로 갯수: n
-// 새로 갯수: n
+// 새로 갯수: m
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', data => {
     const n = data.split(" ");
@@ -67,23 +67,23 @@ process.stdin.on('data', data => {
 
 <!-- 다른사람풀이 -->
 <script>
-    // 내부api대신 for문 중첩
-    process.stdin.setEncoding('utf8');
-    process.stdin.on('data', data => {
-        const n = data.split(" ");
-        const a = Number(n[0]);
-        const b = Number(n[1]);
+    // // 내부api대신 for문 중첩
+    // process.stdin.setEncoding('utf8');
+    // process.stdin.on('data', data => {
+    //     const n = data.split(" ");
+    //     const a = Number(n[0]);
+    //     const b = Number(n[1]);
 
-        let answer = ''
-        for (let i = 0; i < b; i++) {
-            for(let j = 0; j < a; j++){
-                answer += "*"
-            }
-           answer += "\n" //--> 사각형을 만들어야 하므로 
-        }
-        console.log(answer);
+    //     let answer = ''
+    //     for (let i = 0; i < b; i++) {
+    //         for(let j = 0; j < a; j++){
+    //             answer += "*"
+    //         }
+    //        answer += "\n" //--> 사각형을 만들어야 하므로 
+    //     }
+    //     console.log(answer);
 
-    });
+    // });
 </script>
 
 </html>

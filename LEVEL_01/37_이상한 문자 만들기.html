@@ -100,4 +100,32 @@ console.log("해결2:" + solution2("try hello world"));
 
 </script>
 
+<script>
+function solution(s) {
+    let answer = ''
+    let flag = true
+
+    const str = s.toLowerCase().split('')
+
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] == ' ') {
+            answer += ' '
+            flag = true
+        } else {
+            if (flag) {
+                flag = false
+                answer += str[i].toUpperCase()
+            } else {
+                flag = true
+                answer += str[i].toLowerCase()
+
+            }
+        }
+    }
+    return answer
+}
+
+// 짝수 홀수가 아닌 true / false로 해줬다. 
+</script>
+
 </html>

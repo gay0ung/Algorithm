@@ -59,7 +59,7 @@ function solution(n, lost, reserve) {
       // 포함되지 않을경우 -1을 반환한다.
       // 체육복을 가진 사람이 도난 당한 경우의수
       if (reserve.indexOf(lost[i]) !== -1) {
-        reserve.splce(reserve.indexOf(lost[i]), 1)
+        reserve.splice(reserve.indexOf(lost[i]), 1)
         lost.splce(i, 1);
         participate++;
         i--

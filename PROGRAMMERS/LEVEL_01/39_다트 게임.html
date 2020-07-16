@@ -44,38 +44,124 @@
 <!-- Math.pow([대상 숫자], [거듭제곱 횟수]); -->
 <!-- 내풀이 -->
 <script>
+  /*
+    S = S
+    D = D²
+    T = T³
+
+    * (2배)
+    # (-2배)
+  */
 function solution(dartResult) {
-  console.log('점수 계산👉🏻 ' +dartResult);
+  let strNum = '0';
+  let accArr = [0, 0, 0];
+  let accIdx = -1;
 
+  for (let i = 0; i < dartResult.length; i++) {
+    let character = dartResult[i];
+    if (
+      // Check if it is '0' to '9' number
+      character.charCodeAt(0) >= '0'.charCodeAt(0) &&
+      character.charCodeAt(0) <= '9'.charCodeAt(0)
+    ) {
+      strNum += character;
+    } else if (character === 'S' || character === 'D' || character === 'T') {
+      // Single, Double, Triple Area Calculation
+      accIdx++;
+      let multiplyOperandNum = 1;
 
-  let str = dartResult.split("");
+      if (character === 'D') {
+        multiplyOperandNum = 2;
+      } else if (character === 'T') {
+        multiplyOperandNum = 3;
+      }
 
-  console.log(str.indexOf('S'));
-  let score = ["S", "D", "T"]
+      accArr[accIdx] += parseInt(strNum, 10) ** multiplyOperandNum;
+      strNum = '0';
+    } else if (character === '*' || character === '#') {
+      // Score Options
+      let multiplyOperandNum = -1;
+      if (character === '*') {
+        multiplyOperandNum = 2;
 
-  for(let i = 0; i < score.length; i++ ){
-    let result = str.indexOf(i);
+        if (accIdx - 1 >= 0) {
+          accArr[accIdx - 1] = accArr[accIdx - 1] * multiplyOperandNum;
+        }
+      }
 
-    
+      accArr[accIdx] = accArr[accIdx] * multiplyOperandNum;
+    }
   }
-  console.log(score);
-  str.map((el,i) => {
-    //console.log(el);
-    // console.log(i);
 
-    
-    // el.reduce("S", Math.pow())
-   
-  })
-
-  
+  return accArr.reduce((acc, curV) => acc + curV);
 }
-console.log('결과2 : ' + solution("1D#2S*3S") );
-  // '결과 :' + solution("1S2D*3T"), 
+  
+  console.log('결과 : ' + solution("1D#2S*3S") );
+ console.log('결과 :' + solution("1S2D*3T"))
+
+  /*
+  .charAt() : 특정 위치에 있는 문자를 반환합니다.
+    string.charAt( n )
+    - 인덱스의 값이 n인 문자를 반환합니다. 
+
+    ex) "12345".charAt( 2 )
+        // 3
+
+    - 만약 인덱스 n에 문자가 없으면 빈 문자열을 반환합니다.
+
+  .charCodeAt() : 특정 위치에 있는 문자의 유니코드 값을 반환합니다.
+
+  <문법>
+    string.charCodeAt( n )
+    - 인덱스의 값이 n인 문자의 유니코드 값을 반환합니다. 
+
+    ex) "12345".charCodeAt( 2 )
+    // 3의 유니코드 값 51입니다.
+
+    - 만약 인덱스 n에 문자가 없으면 NaN을 반환합니다.
+  
+  */
+
+ // 못풀었다.. 계속해서 카카오관련 문제는 못풀고 있다.. 내수준에서는 너무 어렵다.
+ // 다른사람의 풀이를 보는데도 이해가 가질 않는다. 처음부터 다시 풀어 봐야겠다.
 </script>
 
 <!-- 다른사람풀이 -->
 <script>
+  function solution2(dartResult) {
+      let sdt = ["S", "D", "T"];
+      let sdtn = [1, 2, 3];
+      let opt = ["*", "#"];
+      let arr = []; //숫자로 치환후 옵션 처리 제외한 모음
+      let num = ""; //두자리 이상 숫자일경우
+      let t = dartResult.split("");//한글자씩 자름
+
+      for (let i = 0; i < t.length; i++) {
+        if (isNaN(t[i])) { //숫자가 아닐때
+          if (opt.indexOf(t[i]) == -1) {   // 옵션아닐때
+            let tmp = Math.pow(parseInt(num), sdtn[sdt.indexOf(t[i])]);
+            arr.push(tmp);
+          } else if (opt[1] == t[i]) {   //아차상일 경우
+            let tmp = arr.pop() * -1;
+            arr.push(tmp);
+          } else {     //스타상일 경우
+            let t1 = arr.pop() * 2;
+            let t2 = arr.pop() * 2;
+            if (t2) {
+              arr.push(t2);
+            }
+            arr.push(t1)
+          }
+          num = "";
+        } else { // 숫자일때
+          num += t[i];
+        }
+      }
+      return arr.reduce((a, b) => a + b);
+    }
+
+    console.log('결과 : ' + solution2("1D#2S*3S"));
+    console.log('결과 :' + solution2("1S2D*3T"))
 </script>
 
 </html>

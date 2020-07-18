@@ -10,5 +10,5 @@
 <h2 id="✒-나의-풀이">✒ 나의 풀이</h2>
 <pre class=" language-js"><code class="prism  language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>📋  my code</p>
+<p>📋  <a href="https://github.com/gay0ung/Algorithm/blob/master/BAEKJOON/01_%20%EC%9E%85%EC%B6%9C%EB%A0%A5%EA%B3%BC%20%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/code/01_hello%20world.html">my code</a></p>
 

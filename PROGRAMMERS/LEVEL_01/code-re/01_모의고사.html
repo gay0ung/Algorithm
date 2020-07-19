@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.모의고사</title>
+</head>
+<body>
+  <h1>모의고사</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+    //1번 [1,2,3,4,5] 5
+    //2번 [2,1,2,3,2,4,2,5] 8
+    //3번 [3,3,1,1,2,2,4,4,5,5] 10
+
+    // 높은점수를 맞은사람이 여럿일 경우 오름차순으로. -> sort((a,b) => a-b)
+    // 시험문제 최대 10,000문제
+    // 수포자의 번호를 리턴해준다.
+
+    function solution(answers) {
+      let answer = [];
+      let score = [0, 0, 0];
+
+      const stu1 = [1,2,3,4,5],
+         stu2 = [2, 1, 2, 3, 2, 4, 2, 5],
+         stu3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
+
+      for(let i = 0; i < answers.length; i ++){
+        if (answers[i] == stu1[i % stu1.length]) score[0]++
+        if (answers[i] == stu2[i % stu2.length]) score[1]++
+        if (answers[i] == stu3[i % stu3.length]) score[2]++
+      }
+
+      const max = Math.max(score[0], score[1], score[2]);
+
+      for(let i = 0 ; i < score.length; i++){
+        if(max === score[i]) answer.push(i+1)
+      }
+
+      return answer
+    }
+    console.log(solution([1, 2, 3, 4, 5]));
+
+    // 1st
+    // console.log가  if문 밖에 있을경우에는 배열 순서로 되어있지만 if문안에서는 오름차순으로 자동 정렬되있다. 왜지.?
+    // 왜 score에 각 수포자들의 length값이 나오지..?
+
+    // 2nd
+    // % 나누고 남은수 (정답의 길이만큼의 요소들값만 비교해준다.)
+    // 너무 복잡하게 생각 하지 말자.
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    
+  </script>
+</body>
+</html>

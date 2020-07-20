@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.k번째수</title>
+</head>
+<body>
+  <h1>k번째수</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+    function solution(array, commands) {
+      let answer = [];
+
+      commands.map(arr => {
+   
+        for (let e = 0; e < 1; e++) {
+          let i = arr[0];
+          let j = arr[1];
+          let k = arr[2];
+
+          let result = array.slice(i - 1, j).sort((a, b) => a - b)
+
+          answer.push(result.splice(k - 1, 1))
+        }
+      })
+
+      return answer.reduce((a,b) => a.concat(b))
+    }
+    console.log(solution([1, 5, 2, 6, 3, 7, 4],[[2, 5, 3], [4, 4, 1], [1, 7, 3]]));
+
+    // slice(start,end)
+    // start (0.1...)
+    // end -> 앞까지 (잘린다)
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    function solution2(array, commands) {
+      return commands.map(command => {
+        const [i, j, k] = command
+
+        const newArray = array
+          .filter((value, fIndex) => fIndex >= i - 1 && fIndex <= j - 1)
+          .sort((a, b) => a - b)
+
+        return newArray[k - 1]
+      })
+    }
+    console.log(solution2([1, 5, 2, 6, 3, 7, 4], [[2, 5, 3], [4, 4, 1], [1, 7, 3]]));
+
+    // for문의 값을 1개만 받고 싶었는데 해결책을 e <1로 했다 (for문을 쓴 이유가 없어진게 아닐까?)
+    // 이러한 방식을 const [i,j,k] = command로 깔끔하게 해결했다.
+    // 처음에 return을 해줬는데 마지막에 한번더 return을gksdldbsms 뭐지?
+    // splice() 말고 .filter함수를 사용해 내용을 걸러줬다.
+
+  </script>
+</body>
+</html>

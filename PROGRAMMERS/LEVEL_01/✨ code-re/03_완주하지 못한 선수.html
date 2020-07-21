@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.완주하지 못한 선수</title>
+</head>
+
+<body>
+  <h1>완주하지 못한 선수</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+    // 참여한 사람과 완주한 사람을 비교한다
+
+    function solution(participant, completion) {
+      participant.sort()
+      completion.sort()
+
+      for(let i = 0; i < participant.length; i++){
+        if(participant[i] !== completion[i] ){
+          return participant[i]
+        }
+      }
+    }
+    console.log(solution(["mislav", "stanko", "mislav", "ana"],["stanko", "ana", "mislav"]));
+
+    // 왜난 늘 복잡하게 생각 해서 꼬일까..?
+    // 의외로 간단한 문제 였다!
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+
+  </script>
+</body>
+
+</html>

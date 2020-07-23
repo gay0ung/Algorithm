@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.모의고사</title>
+</head>
+
+<body>
+  <h1>모의고사</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+    // 홀수 일경우에는 가운데 글자
+    // 짝수일 경우에는 가운데 두글자를 반환하면 된다.
+  
+    function solution(s) {
+      let  str = s.split('')
+      let division = Math.floor(str.length / 2) 
+
+      return str.length % 2 === 1 ?  str.splice(division, 1).join(''): str.splice(division - 1, 2).join('') 
+    }
+    console.log(solution("qdd"));
+    // 쉽게 풀긴 했지만 코드가 중복되고 있다. 더 깔끔하게 할수 있는 방법이 있을까?
+  </script>
+  
+  <!-- 다른 풀이 -->
+  <script>
+    // 배열로 만들지 않고 문자열에서 추출하는 메서드를 사용해본다. -> String.substring(start,end)
+    function solution2(s) {
+      let LENGTH = s.length
+      let division = Math.floor(LENGTH / 2)
+
+      return LENGTH % 2 === 0 ? s.substring(division - 1, division + 1) : s.substring(division, division+1)
+    }
+    console.log(solution2("abcdd"));
+  </script>
+</body>
+
+</html>

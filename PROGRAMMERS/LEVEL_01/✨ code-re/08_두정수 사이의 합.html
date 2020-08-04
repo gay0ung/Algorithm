@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8.두정수 사이의 합</title>
+</head>
+
+<body>
+  <h1>두정수 사이의 합</h1>
+
+  <!-- 나의 풀이 -->
+<script>
+  function solution(a, b) {
+    let result = 0;
+
+    if(a === b) {
+      result =  a
+    } else if(a < b) {
+      for (let i = a; i <= b; i++) {
+        result += i
+      }
+    } else {
+        for (let i = b; i <= a; i++) {
+          result += i
+        }
+    }
+    return result
+  } 
+  console.log( solution(5,3));
+  // solution(3, 3)
+  // 함수를 단축시킬수 있는 방법을 좀더 생각 해 보자! 코드가 너무 지저분하다.
+</script>
+
+<!-- 다른 풀이 -->
+<script>
+  function adder(a, b) {
+    let result = 0;
+    let min = a;
+    let max = b;
+
+    if (a > b) { min = b,max = a }
+
+    for (let i = min; i <= max; i++) {
+      result += i;
+    }
+
+    return result;
+  }
+
+  console.log(adder(2,1 ))
+</script>
+</body>
+
+</html>

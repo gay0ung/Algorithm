@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.모의고사</title>
+</head>
+<body>
+  <h1>모의고사</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(s){
+    const chStr = s.toLowerCase().split('');
+
+    let count = [0,0];
+
+    chStr.filter(el => {
+      if(el == "p"){
+        count[0]++;
+      } 
+      if(el == "y"){
+        count[1]++
+      }
+    })
+    return count[0] === count[1] ? true : false
+  }
+  // console.log(solution("pPoooyY"));
+  console.log(solution("oooy"));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    function numPY(s) {
+      return s.match(/p/ig).length == s.match(/y/ig).length;
+    }
+
+    console.log(numPY("Pyy"))
+  </script>
+</body>
+</html>

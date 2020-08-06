@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11_문자열 내림차순으로 배치하기</title>
+</head>
+
+<body>
+  <h1>문자열 내림차순으로 배치하기</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(s) {
+    let str = s.split('')
+
+    return str.sort((a,b) => a > b ? -1 : 1).join('')
+  }
+  console.log(solution("Zbcdefg"));
+  // 대문자를 어떻게 맨마지막으로 오게 해야할지 고민했는데 ... 정렬하니깐 그냥 맨뒤로 갔다 . 대문자가 가장 큰 수 인가보다.
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+  function solution2(s) {
+    return s
+      .split("")
+      .sort()
+      .reverse()
+      .join("");
+  }
+    console.log(solution2("Zbcdefg"));
+  </script>
+</body>
+
+</html>

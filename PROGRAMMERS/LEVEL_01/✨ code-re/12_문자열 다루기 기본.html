@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12_문자열 다루기 기본</title>
+</head>
+
+<body>
+  <h1>문자열 다루기 기본</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(s) {
+    //1(11번 오류가 나게된다.)
+    /*
+    let isNum = s * 1
+
+    if (s.length === 4 || s.length === 6) {
+       return !isNaN(isNum)
+    } else return false
+    */
+
+    // 2
+    return (s.length == 4 || s.length == 6) && /^[0-9]+$/.test(s)
+  
+  }
+  console.log(solution('1234'));
+  // 테스트 11번을 통과하지 못했다.
+  // -> 지수형식("1e22")을 넣었을 경우 문제가 됩니다.즉 문자열을 숫자열로 인지하게 된다.
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+  function alpha_string46(s) {
+    var regex = /^\d{6}$|^\d{4}$/;
+    return regex.test(s);
+
+    // 정규식 해석
+    /*
+      ^   :시작
+      \d  : 숫자를 찾는다 ( == [0-9])
+      {n} : n의 수만큼 앞글자를 반복한다.
+      $ : 입력 문자열의 끝 부분에서 위치를 찾거나 끝 줄을 찾는다.
+      | : or
+    */
+  }
+  console.log('결과2 : ' + alpha_string46("1e34"));
+  </script>
+</body>
+
+</html>

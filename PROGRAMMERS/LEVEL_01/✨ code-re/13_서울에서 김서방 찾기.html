@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13.서울에서 김서방 찾기</title>
+</head>
+
+<body>
+  <h1>서울에서 김서방 찾기</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+    // 1. 배열에서 "kim" 이란 단어를 찾는다.
+    // 2. "kim" 의 index번호를 반환 한다.
+    function solution(seoul) {
+      let result = ""
+      seoul.filter((el,idx) => {
+        return el === "Kim" ? result = `김서방은 ${idx}에 있다` : false
+      })
+      return result
+    }
+    
+    console.log(solution(['Jane', 'Kim']));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    function findKim(seoul) {
+      var idx = seoul.indexOf('Kim');
+      return `김서방은 ${idx}에 있다`
+    }
+
+    // 실행을 위한 테스트코드입니다.
+    console.log(findKim(["Queen", "Tod", "Kim"]));
+  </script>
+</body>
+
+</html>

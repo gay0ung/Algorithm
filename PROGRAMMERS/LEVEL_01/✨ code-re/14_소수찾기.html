@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14.소수 찾기</title>
+</head>
+
+<body>
+  <h1>소수 찾기</h1>
+  <!-- 나의 풀이 -->
+  
+  <script>
+    // 소수란 1과 자기 자신 외의 약수( 어떤수를 나누었을 때 나머지가 0인 수)를 가지지 않는 1보다 큰 자연수.
+    // 1. 1과 자기자신을 제외한 정수 중에 나눠 지는 정수가 있는지 확인한다.
+    // 2. i % k = 0 이면 (또 다른 값 k로 i를 나눌수 있으면 소수가 아니므로) isPrimeNumber= false로 업데이트 한다.
+
+    function solution(n) {
+        let answer = 0;
+        let arr = [];
+
+        for (let i = 2; i <= n; i++) {
+          arr[i] = i;
+        }
+
+        for (let i = 2; i <= n; i++) {
+          if (arr[i] === 0) // 이미 체크된 수의 배수는 확인하지 않는다
+            continue;
+
+          for (let j = i + i; j <= n; j += i) { // i를 제외한 i의 배수들은 0으로 체크
+            arr[j] = 0;
+          }
+        }
+
+        for (let i = 2; i <= n; i++) {
+          if (arr[i] !== 0)
+            answer++;
+        }
+        return answer;
+      }
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+  function numberOfPrime(n) {
+    // var result = 0;
+    var primeNumber = [];
+    // 함수를 완성하세요.
+    for (var i = 2; i <= n; i++) {
+      var devided = 0;
+
+      for (var a = 2; a < i; a++) {
+        if (i % a === 0) {
+          devided += 1;
+        }
+      }
+      if (devided === 0) {
+        primeNumber.push(i);
+      }
+    }
+
+    //result = primeNumber.length;
+    return primeNumber.length;
+  }
+
+  console.log(numberOfPrime(10));
+  </script>
+</body>
+
+</html>

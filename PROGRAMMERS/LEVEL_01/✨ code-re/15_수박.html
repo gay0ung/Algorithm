@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15.수박</title>
+</head>
+<body>
+  <h1>수박</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+    
+    function solution(n) {
+    let answer = ""
+
+    for( let i = 1; i <= n; i++ ){
+      if(i % 2 === 0 ) {
+        answer += "박"
+      } else {
+        answer += "수"
+      }
+     }
+
+     return answer
+    }
+    console.log(solution(6));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <!--  나의 풀이를 좀더 간결하게 풀이 한것이다. -->
+  <script>
+    function solution2(n){
+      let answer = ""
+
+      for(let i = 0; i < n; i++){
+        answer += i % 2 == 0 ? "수" : "박"
+      }
+
+      return answer
+    }
+
+    console.log(solution2(4));
+  </script>
+</body>
+</html>

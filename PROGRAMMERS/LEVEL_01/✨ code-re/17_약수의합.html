@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17.약수의 합</title>
+</head>
+<body>
+  <h1>약수의 합</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(n) {
+   let divisor = 0
+   for(let i = 1; i <= n; i++){
+     console.log();
+     if(Number.isInteger(n / i)){
+       divisor += i
+     }
+   }
+    return divisor
+  }
+
+  console.log(solution(12));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    
+  </script>
+</body>
+</html>

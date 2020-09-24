@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>18.자릿수 더하기</title>
+</head>
+
+<body>
+  <h1>자릿수 더하기</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(n) {
+    let answer = 0; 
+
+    const strArr = (n + "").split("");
+
+    strArr.map(num => answer += num * 1)
+
+    return answer
+  }
+  console.log(solution(456));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    //reduce 를 활용
+    function solution2(n){
+      return (n+"").split('').reduce((acc,curr)=> acc + parseInt(curr),0)
+    }
+    console.log(solution2(123));
+  </script>
+</body>
+
+</html>

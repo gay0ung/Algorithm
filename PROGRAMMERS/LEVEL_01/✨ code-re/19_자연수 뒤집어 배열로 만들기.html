@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.모의고사</title>
+</head>
+
+<body>
+  <h1>모의고사</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(n) {
+    //1번째  -> 실행은 되지만 제출 실패
+    let str = (n + "").split('')
+
+    // return str.map(el => (el * 1)).sort((a, b) => b - a) 
+    // 순차적으로 정리해서 배열을 하란 뜻이 아니고 숫자의 배열을 그냥 반대로만 배열 하면 되는 문제 여서 계속 오류가 났었다.
+
+    //2번째.  -> 성공!
+    return str.map(el => Number(el)).reverse()
+    
+  }       
+
+  console.log(solution(12745));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+
+  </script>
+</body>
+
+</html>

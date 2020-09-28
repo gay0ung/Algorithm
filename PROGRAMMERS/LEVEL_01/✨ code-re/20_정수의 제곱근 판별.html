@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20.정수 제곱근 판별</title>
+</head>
+
+<body>
+  <h1>정수 제곱근 판별</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(n) {
+    const sqrt =  Math.sqrt(n)
+
+    return Number.isInteger(sqrt) ? Math.pow(sqrt+1,2) : -1
+  }
+  console.log(solution(121));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+
+  </script>
+</body>
+
+</html>

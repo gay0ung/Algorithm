@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.최대공약수와 최소공배수</title>
+</head>
+
+<body>
+  <h1>최대공약수와 최소공배수</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(n, m) {
+    // 첫번째 실행 o | 제출 x 1,2빼고 모두 실패
+    //return m % n === 0 ? [n , n * m / n] : [1,n * m]
+
+    // 두번째 실행 o  | 제출 x 5번실패 -> 뭐가 문제지..?
+    // let answer = []
+
+    // for(let i = 1; i < m; i++){
+    //   if(n % i === 0 && m % i ===0) answer.push(i)
+    // }
+
+    // let greatest = Math.max(...answer)
+    // let least = n * m / greatest
+
+    // return [greatest,least]
+
+    // 세번째 실행 o | 제출 o  -> 다른사람 코드 참고.
+      let answer = [];
+      let min = Math.min(n,m);
+      let gcd = 0 ; // Greatest common divisor
+    
+      // gcd
+      for(let  i = min; i > 0; i--){
+        if ((n % i === 0) && (m % i === 0)) {
+          gcd = i;
+          answer[0] = gcd;
+          break;
+        }
+      }
+
+      // lcd: Least common multiple
+      answer[1] = m * n / gcd;
+
+      return answer;
+  }
+
+  console.log(solution(2,12));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+
+  </script>
+</body>
+
+</html>

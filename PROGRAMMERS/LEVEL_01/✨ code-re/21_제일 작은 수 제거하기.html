@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.제일 작은 수 제거하기</title>
+</head>
+
+<body>
+  <h1>제일 작은 수 제거하기</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(arr) {
+    if(arr.length <= 1) {
+      return [-1]
+    } else {
+      arr.splice(arr.indexOf(Math.min(...arr)), 1)
+      return arr
+    }
+  }
+  console.log(solution([5,3,2,1]));
+  </script>
+</body>
+
+</html>

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.모의고사</title>
+  <title>2.모의</title>
 </head>
 <body>
-  <h1>모의고사</h1>
+  <h1>모의</h1>
 
   <!-- 나의 풀이 -->
   <script>
   
-    console.log(solution);
+  console.log(solution());
   </script>
 
   <!-- 다른 풀이 -->

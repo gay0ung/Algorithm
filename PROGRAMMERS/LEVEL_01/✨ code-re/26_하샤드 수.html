@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>26.하샤드 수</title>
+</head>
+
+<body>
+  <h1>하샤드 수</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(x) {
+    // 첫번째 실행 o | 제출 x -> 3,4,6,8,10,11,17 실패
+    //let numSplit = (x + '').split('').map((num) => Number(num))
+
+    // return x % (numSplit[0] + numSplit[1]) === 0 ? true : false
+
+    // 두번째 실행 o | 제출 o  -> 왜 실패가 나온거지..? 비슷한데..?
+    let divisor = 0;
+    let numSplit = (x + '').split('').map((num) => divisor += num * 1 )
+
+    return x % divisor === 0 ? true : false
+  }
+ 
+  console.log(solution(13));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+  function solution2(x){
+    return !(x % (x+'').split('').reduce((a,b)=> +a + +b))
+  }
+  console.log(solution2(14));
+  </script>
+</body>
+
+</html>

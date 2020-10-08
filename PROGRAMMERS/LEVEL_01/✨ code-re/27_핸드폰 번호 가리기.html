@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>27.핸드폰 번호 가리기</title>
+</head>
+
+<body>
+  <h1>핸드폰 번호 가리기</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(number) {
+    let secretNum = number.length - 4;
+    let numArr = number.split('')
+
+    return numArr.fill('*', 0, secretNum).join('')
+  }
+  console.log(solution("027778888"));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    function solution2(number){
+      return "*".repeat(number.length - 4) + number.slice(-4);
+    }
+    console.log(solution2('0277748888'));
+  </script>
+</body>
+
+</html>

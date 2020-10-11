@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.모의</title>
+</head>
+<body>
+  <h1>모의</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+  function solution(arr1, arr2) {
+    return arr1.map((arr,i)=> arr.map((num,j)=> num += arr2[i][j]))
+  }
+  console.log(solution([[1, 2], [2, 3]], [[3, 4], [5, 6]])); // [[4,6],[7,9]]
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    function sumMatrix(A, B) {
+      var answer = Array();
+      for (var i = 0; i < A.length; i++) {
+        answer[i] = [];
+        for (var j = 0; j < A[i].length; j++) {
+          answer[i][j] = A[i][j] + B[i][j];
+        }
+      }
+      return answer;
+    }
+
+    console.log(sumMatrix([[1, 2], [2, 3]], [[3, 4], [5, 6]]));
+  </script>
+</body>s
+</html>

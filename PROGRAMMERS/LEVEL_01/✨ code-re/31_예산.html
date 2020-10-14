@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>31.예산</title>
+</head>
+
+<body>
+  <h1>예산</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+    // 오름차순으로 정렬해준다.
+    // 각 부서의 예산을 차례로 더한후 budget보다 작으면 break한다.
+    // 예산을 받을수 있는 부서의 갯수를 return.
+  function solution(d, budget) {
+    d.sort((a,b)=>a-b)
+    let count = 0;
+    let sum = 0;
+
+
+    for(let i = 0; i < d.length; i++){
+      // 첫번째 실행 o | 제출 x _ 5,7,8,9,11,12,14
+  
+      //  if ( budget < sum + d[i]) break
+      //   sum += d[i]
+      //   count++
+
+      // 두번째  실행 o | 제출 x _ 5,7,8,9,11,12,14
+      // if(sum+d[i] <= budget){
+      //   sum += d[i]
+      //   count++
+      // } else break
+
+      // 세번째 실행 -> 다른사람 코드 참고.
+      count++
+      sum += d[i]
+
+      if(sum > budget) {
+        count--
+        break
+      }
+
+    }
+
+    return count
+  }
+  console.log(solution([2,2,2,3], 10)); // 4
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+
+  </script>
+</body>
+
+</html>

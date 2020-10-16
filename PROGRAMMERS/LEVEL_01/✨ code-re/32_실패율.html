@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>32.실패율</title>
+</head>
+
+<body>
+  <h1>실패율</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+    // 실패율 = 스테이지 도달했지만 클리어 하지 못한 수 / 스테이지 도달한 플레이어 수
+    // stages => 사용자가 현재 멈춰있는 스테이지 번호
+    // stage =>  1 <= N <= N + 1 (자연수가 담겨 있다)  N은 전체 스테이지 갯수
+    // return => 실패율이높은 스테이지 (내림차순)
+    // 스테이지에 도달한 유저가 없는 경우는 해당 스테이지의 실패율은 0으로 정의
+  function solution(N, stages) {
+  /* 풀지 못했다... */
+  //   let user = stages.length;
+
+  //   stages.sort((a, b) => a - b);
+  //   // Stage 난이도 확인.
+  //   stages.map(el => { if (el > N + 1) alert(`stage번호가 ${N + 1} 이하인지 확인해 주세요`)})
+
+  //   let arrivals = stages.reduce((acc,curr) => {
+  //       acc[curr] = ++acc[curr] || 1;
+  //     return acc
+  //   }, {})
+
+  //   console.log(arrivals);
+
+  //   let failureArr =[];
+
+  //   // 실패율 계산하기
+  //   for(const arrival in  arrivals){
+  //     console.log(arrival);
+  //     let obj = {
+  //       stage: arrival ,
+  //       failure  : Math.round((arrivals[arrival] / user) * 1000) / 1000
+       
+  //     }
+
+  //     failureArr.push(obj)
+  //     user = user - arrivals[arrival]
+  //   }
+    
+  //   failureArr.sort((a, b) => {
+  //     return a.stage < b.stage ? 1 : a.stage > b.stage ? -1 : a.stage === b.stage ? Math.min(Number(a.stage),Number(b.stage)) = -1 :0
+  //   })
+
+  //   console.log(failureArr); 
+
+  /* 다른사람 코드 참고 */
+    let answer = []
+
+    for( let i = 1; i <= N; ++i){
+      let usersReachedCurrentStage = stages.reduce((acc,curr) => acc + ((curr >= i) ? 1 : 0), 0) // 해당 스테이지를 통과한 유저수
+      let userStagenatedCurrentStage = stages.reduce((acc,curr) => acc + ((curr === i) ? 1 : 0), 0) // 스테이지에 있는 유저수
+
+      if(usersReachedCurrentStage === 0){
+        answer.push({'stage':i,'failRate':0})
+        continue;
+      }
+
+      answer.push({'stage':i,'failRate':(userStagenatedCurrentStage/ usersReachedCurrentStage)})
+    }
+
+    return answer.sort((a,b)=>{
+      return a.failRate > b.failRate ? -1 : a.failRate < b.failRate ? 1 : a.stage - b.stage
+    }).map(num => num.stage);
+  }
+  console.log(solution(5,[2, 1, 2, 6, 2, 4, 3, 3]));
+
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+
+  </script>
+</body>
+
+</html>

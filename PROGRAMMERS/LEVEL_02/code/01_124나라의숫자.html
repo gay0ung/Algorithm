@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.124나라의 숫자</title>
+</head>
+<body>
+  <h2>1. 124나라의 숫자</h2>
+  <!-- 나의 풀이 -->
+  <script>
+    // n이 3이상 부터는 10자리 100자리 .. 이런식으로 9개씩 단위순서로 증가.
+    // 모든 숫자는 1,2,4 로만 이루어짐
+    // 1,2,4 계속 바뀜
+  function solution(n) {
+    let oneTowFour = [1,2,4]
+    // console.log(n);
+
+    let answer = 0;
+    if(n <= 3){
+      for(let i = 1; i < n + 1 ; i ++){
+        // console.log(i);
+        i = oneTowFour[i-1]
+        // console.log(i);
+        // console.log(n+1);
+        return answer = n + 1
+      }
+    } else if (n > 3){
+      let digit = []
+      for(let i = 1 ; i > 0 ;i++){
+        // console.log(i);
+        if(n <= 9 * i) {
+         digit.push(i)
+          break
+        }
+      }
+
+      console.log(digit);
+    }
+    
+  }
+
+  // console.log(solution(81));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    function solution2(n){
+      const oneTowFour = [4,1,2];
+      let answer = '';
+
+      while(n){
+        answer = oneTowFour[n%3] + answer;
+        n = (n % 3 === 0) ? n/3 - 1 : Math.floor(n/3)
+      }
+      return Number(answer);
+    }
+   
+    console.log(solution2(4));
+  </script>
+</body>
+</html>

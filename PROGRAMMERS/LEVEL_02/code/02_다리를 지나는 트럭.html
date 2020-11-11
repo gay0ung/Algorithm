@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.다리를 지나는 트럭</title>
+</head>
+
+<body>
+  <h2>1.다리를 지나는 트럭</h2>
+  <!-- 나의 풀이 -->
+  <script>
+    function solution(bridge_length, weight, truck_weights) {
+        var answer = 0;
+        let total_truck_weight = 0;
+        let bridge_queue = [], weight_queue = [];ㅉ
+
+        do {
+          // 다리를 건너는 트럭 이동
+          for (let i in bridge_queue) {
+            bridge_queue[i]--;
+          }
+          if (bridge_queue[0] == 0) {
+            total_truck_weight -= weight_queue.shift();
+            bridge_queue.shift();
+          }
+
+          // 다리가 견딜 수 있으면 트럭 1개 올리기
+          if (total_truck_weight + truck_weights[0] <= weight) {
+            weight_queue.push(truck_weights[0]);
+            bridge_queue.push(bridge_length);
+            total_truck_weight += truck_weights.shift();
+          }
+          answer++;
+        } while (bridge_queue.length > 0)
+
+        return answer;
+      }
+      console.log(solution(2, 10, [7, 4, 5, 6]));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    function solution2(bridge_length, weight, truck_weights) {
+      let answer = 0,
+        truckOnTheBridge = {}, // 다리 위에 있는 트럭
+        finishedTruck = 0; // 다리를 건넌 트럭
+
+      let idx = 0,
+        curWeight = 0;
+
+      // 다리를 건넌 트럭과 대기 트럭의 갯수가 같으면 트럭이 모두 지난간 것임.
+      while (truck_weights.length !== finishedTruck) {
+        answer++ // 경과시간
+        for (let key in truckOnTheBridge) {
+          console.log(key);
+          truckOnTheBridge[key] += 1;
+
+          // 다리 위에 트럭이 다리를 지났다면 트럭을 다리에서 삭제
+          if (truckOnTheBridge[key] > bridge_length) {
+
+            delete truckOnTheBridge[key];
+            let i = Number(key);
+            // console.log(i);
+            curWeight -= truck_weights[i];
+            finishedTruck += 1
+          }
+        }
+
+        let curTruckWeigth = truck_weights[idx]
+
+        // 현재 다리 위에 있는 트럭의 무게 더하기 현재 추가할 트럭의 무게가  
+        // 다리가 버틸수 있는 무게 인지 확인
+        if (curWeight + curTruckWeigth <= weight) {
+          curWeight += curTruckWeigth;
+          truckOnTheBridge[idx++] = 1;
+        }
+      }
+
+      return answer
+    }
+    // console.log(solution2(2, 10, [7, 4, 5, 6])); //8
+  </script>
+
+  <script>
+     function solution3(bridge_length, weight, truck_weights) {
+        let num = truck_weights.length;
+        let arrived = [] // 도착한 트럭
+        let ing = [] // 건너는 중인 트럭 / 2차원배열
+
+        ing.push([truck_weights.shift(), 1]); // [무게, 시간] [7,1];
+
+        let count = 1;
+
+        for (let sum = ing[0][0]; arrived.length < num; count++) {
+          console.log(sum);
+          if (sum + truck_weights[0] <= weight) {
+            let truck = truck_weights.shift();
+            ing.push([truck, 0]);
+            sum += truck
+          }
+
+          for (let i = 0; i < ing.length; i++) {
+            ing[i][1]++;
+            if (ing[i][1] === bridge_length) { // 도착했을경우.
+              sum -= ing[i][0];
+              arrived.push(ing.shift());
+              i--
+            }
+          }
+        }
+
+        count++;
+
+        return count
+      }
+      // console.log(solution3(2, 10, [7, 4, 5, 6]));
+  </script>
+</body>
+
+</html>

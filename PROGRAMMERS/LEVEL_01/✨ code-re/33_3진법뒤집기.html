@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>33_3진법 뒤집기</title>
+</head>
+<body>
+  <h2>3진법 뒤집기</h2>
+  <script>
+    function solution(n) {
+      let answer = 0;
+      let ternaryS = n.toString(3).split('').reverse()
+      let terLen = ternaryS.length;
+
+      ternaryS.map((el, idx) => {
+        el = Number(el) * Math.pow(3, terLen - 1 - idx);
+        answer += el
+      })
+
+      return answer;
+    }
+    console.log(solution(45));
+  </script>
+  <!-- 다른풀이 -->
+  <script>
+    function solution2(n){
+
+      return parseInt([...n.toString(3)].reverse().join(''),3)
+    }
+    console.log(solution2(45));
+  </script>
+</body>
+</html>

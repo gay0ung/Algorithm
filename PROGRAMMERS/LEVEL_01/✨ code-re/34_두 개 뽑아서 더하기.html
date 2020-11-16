@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>34.두개 뽑아서 더하기</title>
+</head>
+
+<body>
+  <h1>두개 뽑아서 더하기</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+    // 선택한 숫자를 전부 더해준다.(선택한 숫자를 제외한 숫자들)
+    // numbers에서 중복되는 숫자가 있을경우 하나만 빼준다.
+    // reduce를 이용해 중복된 숫자들을 제거한후 오름차순으로 정렬한다.
+
+    function solution(numbers) {
+      let answer = [];
+
+      for(let i  = 0; i < numbers.length; i++){
+        let filNum = numbers.filter(el => el === numbers[i]);
+
+        if(filNum.length !== 1){
+          let sameNum = numbers.splice(numbers.indexOf(numbers[i]), 1)[0];
+          numbers.map(el => answer.push(sameNum + el));
+        } else {
+          numbers.filter(el => {
+            if(el !== numbers[i]) {
+              answer.push(numbers[i] + el);
+            }
+          })
+        }
+      }
+
+      answer.sort((a, b) => a - b);
+
+      // return answer.reduce((prev,curr)=> prev.includes(curr) ? prev : [...prev, curr],[])
+    }
+    console.log(solution([2, 1, 3, 4, 1])); // [2,3,4,5,6,7]
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+    function solution2(numbers){
+      let calNum = [];
+
+      for(let i = 0; i < numbers.length; i++){
+        for(let j = i + 1; j < numbers.length; j++ ){
+          calNum.push(numbers[i] + numbers[j])
+        }
+      }
+      console.log(new Set(calNum)); // Set(6) {3, 5, 6, 4, 2, …}
+      console.log(...new Set(calNum)); // 3 5 6 4 2 7
+      console.log([...new Set(calNum)]); // [3, 5, 6, 4, 2, 7]
+      console.log(Array.from(new Set(calNum))); // [3, 5, 6, 4, 2, 7]
+
+      return [...new Set(calNum)].sort((a, b) => a - b)
+    }
+    console.log(solution2([2, 1, 3, 4, 1])); // [2,3,4,5,6,7]
+  </script>
+
+  <!-- Set -->
+  <script>
+    const set = new Set(['1',2,3,4,4,'1','2'])
+    console.log([...set]);
+    console.log(Array.from(set));
+
+    const setAdd = new Set()
+    setAdd.add(42)
+    console.log(setAdd); //42
+
+    const setHas = new Set([1, 2, 3, 4, 5]);
+    console.log(setHas.has(3)); // true
+    console.log(setHas.has(8)); // false
+  </script>
+</body>
+
+</html>

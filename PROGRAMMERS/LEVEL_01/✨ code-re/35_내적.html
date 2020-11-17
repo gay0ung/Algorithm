@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>35.내적</title>
+</head>
+
+<body>
+  <h1>내적</h1>
+
+  <!-- 나의 풀이 -->
+  <script>
+    function solution(a, b) {
+      let answer = 0;
+
+      if(a.length !== b.length) return;
+
+      // for(let i = 0; i < a.length; i++){
+      //   answer += a[i] * b[i];
+      // }
+
+      a.map((el,idx)=>  answer += el * b[idx])
+
+      return answer
+    }
+    console.log(solution([-1, 0, 1], [1, 0, -1]));
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+  // reduce사용하기
+  function solution2(a,b){
+    return a.reduce((prev,cur,idx)=> prev+= cur*b[idx],0)
+  }
+  console.log(solution2([-1, 0, 1], [1, 0, -1]));
+
+  </script>
+</body>
+
+</html>

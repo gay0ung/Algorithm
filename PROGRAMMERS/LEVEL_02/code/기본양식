@@ -9,7 +9,8 @@
   <h2>1.제목</h2>
   <!-- 나의 풀이 -->
   <script>
-
+  
+  console.log(solution());
   </script>
 
   <!-- 다른 풀이 -->

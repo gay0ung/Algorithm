@@ -24,8 +24,7 @@
         return "0"
       } else {
         return numbers.map(str => str + '')
-                .sort((a,b) => (b.repeat(4).slice(0,4)) - (a.repeat(4).slice(0, 4)))
-                .reduce((a, b) => a + b)
+                .sort((a,b) => (b.repeat(4).slice(0,4)) - (a.repeat(4).slice(0, 4))).reduce((a, b) => a + b)
 
         // return shuffle.map(str => str + '')
       }

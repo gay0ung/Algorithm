@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7.프린터</title> 
+</head>
+<body>
+  <h2>7.프린터</h2>
+  <!-- 나의 풀이 -->
+  <script>
+    // 맨앞 에 있는 문서  = J
+    // 중요도가 높은문서 한개라도 존재한다면 J를 대기목록의 가장 마지막에 넣는다.
+    // 중요한 문서가 없다면 J를 인쇄한다.
+    // 숫자가 높은게 중요도가 높은것.
+
+    // push - 맨뒤에 추가
+    // indexOf 로 내프린터의 순서를 리턴
+
+  function solution(priorities, location) {
+    // 실행은 했지만 제출이 안됨. 
+      // priorities[location] = priorities[location] + '';
+
+      // let mine = priorities[location];
+      // let newPrint = priorities;
+      // let important = Math.max.apply(null, priorities);
+   
+      // for(let i = 0; i < priorities.length; i++){
+      //   if (newPrint[0] * 1 === important) break;
+
+      //   let J = newPrint.shift();
+
+      //   if (priorities[i] < important) newPrint.push(J);       
+      // }
+
+      // return newPrint.indexOf(mine) + 1;
+
+      // 2번째 시도.
+      let newPrint = priorities.map((cur,i)=>{
+        return {
+          target: i === location,
+          value : cur
+        }
+      })
+
+      let position = 0;
+
+      while(true){
+        const currObj = newPrint[position];
+        let flag = false;
+
+        for (let i = position + 1; i < newPrint.length; i++) {
+          if (currObj.value < newPrint[i].value) {
+            newPrint = newPrint.filter((el, idx) => idx !== position);
+            newPrint.push(currObj);
+            flag = true;
+            break
+          }
+        }
+
+        if (!flag) position++;
+        if (position >= newPrint.length - 1) break;
+      }
+
+      let answer = 0;
+
+      newPrint.map((el,i)=>{
+        el.target ? answer = i + 1 : null;
+        return null
+      });
+
+      return answer
+    }
+  console.log(solution([2, 1, 3, 2],2)); // 1
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+
+  </script>
+</body>
+</html>

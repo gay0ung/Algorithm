@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9.타겟 넘버</title>
+</head>
+
+<body>
+  <h2>9.타겟 넘버</h2>
+  <!-- 나의 풀이 -->
+  <script>
+    // 덧셈과 뺄셈만 사용가능
+    function solution(numbers, target) {
+      let answer = 0;
+
+      getAnswer(0, 0);
+
+      function getAnswer(i,sum){
+        if(i === numbers.length) {
+          if(sum === target) {
+            answer++
+          }
+          return;
+        }
+        getAnswer(i + 1, sum + numbers[i])
+        getAnswer(i + 1, sum - numbers[i]);
+      }
+      return answer;
+    }
+    console.log(solution([1, 1, 1, 1, 1],3)); // 5
+  </script>
+</body>
+
+</html>

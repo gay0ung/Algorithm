@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_introduction</title>
+</head>
+
+<body>
+  <script>
+    // 배열중 item이 몇번째위치에 있는지 반환하는 문제
+
+    const my_list = [1, 3, 5, 7, 9]
+    function binary_search(list, item) {
+      let low = 0;
+      let high = list.length - 1; // 4
+
+      while (low <= high) {
+        // 가장 가운데 있는 원소를 확인한다.
+        let mid = Math.round((low + high) / 2); // 2
+        let guess = list[mid]; // 5
+
+        if (guess === item) return mid
+        if (guess < item) {
+          low = mid + 1
+        } else {
+          high = mid - 1
+        }
+      }
+
+      return alert('배열안에 값이 없습니다.')
+
+    }
+
+    console.log(binary_search(my_list, -3));
+  </script>
+</body>
+
+</html>

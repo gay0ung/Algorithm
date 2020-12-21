@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10.소수찾기</title>
+</head>
+
+<body>
+  <h2>10.소수찾기</h2>
+  <!-- 나의 풀이 -->
+  <script>
+    // function solution(numbers) {
+    //   // let strArr = numbers.split('').sort((a, b) => b - a)
+    //   // console.log(strArr);
+    //   // let n = 10
+    //   // let arr = []
+    //   // let cnt = 0
+
+    //   // // 한자리 수 
+    //   // strArr.filter(el => {
+    //   //   if (el * 1 === 0 || el * 1 === 1) return
+    //   //   arr.push(el)
+    //   // })
+
+    //   // strArr.forEach((el, i, origin) => {
+    //   //   console.log(origin);
+    //   //   const fixed = origin.splice(i, 1);
+
+
+    //   // })
+    //   // // console.log(arr);
+
+
+    //   // let filterArr = arr.filter(el => el % 2 !== 0);
+
+
+    //   // 소수를 거르는 함수
+    //   // for (let i = 2; i <= n; i++) {
+    //   //   let devided = 0;
+    //   //   // console.log(i);
+    //   //   for (let a = 2; a < i; a++) {
+    //   //     if (i % a === 0) devided += 1
+    //   //   }
+    //   //   if (devided === 0) {
+    //   //     cnt++
+    //   //   }
+    //   // }
+
+    //   // return cnt
+    // }
+
+
+    function solution(numbers) {
+      let answer = 0
+
+      let a = numbers.split('').sort((a, b) => b - a);
+      let N = Number(arr.join(''));
+
+      let arr = makePrimeNum(num);
+      console.log(num);
+
+      for (let i = 2; i <= N; i++) {
+        if (arr[i] === false) continue;
+
+        // 소수라면 문자열로 바꾸고 배열로 변환
+        let temp = i.toString().split('');
+
+        for (let cn of a) {
+          let idx = temp.indexOf(cn);
+          if (idx > -1) temp.splice(idx, 1)
+        }
+
+        if (temp.length === 0) answer++
+
+      }
+
+      return answer
+    }
+
+    function makePrimeNum(N) {
+      let arr = [];
+      for (let i = 2; i <= N; i++) {
+        if (arr[i] === false) continue;
+        for (let k = i + i; k <= N; k += i) {
+          arr[k] = false;
+        }
+      }
+      return arr;
+    }
+    console.log(solution("011"));//2 [11,101]
+  </script>
+
+  <!-- 다른 풀이 -->
+  <script>
+
+  </script>
+</body>
+
+</html>

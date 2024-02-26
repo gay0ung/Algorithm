@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_분수의덧셈</title>
+</head>
+<body>
+    <script>
+        function solution(denum1, num1, denum2, num2) {
+        const answer = [];
+        const denominator = num1 * num2;
+        const numerator = (denum1 * num2) + (denum2 * num1);
+console.log(numerator);
+            let isPrimeNumber = true;
+            
+            for(let i=1; i <= numerator; i++) {
+                for(let j=2; j<i; j++) {
+                    isPrimeNumber = false;
+                }
+
+                if (isPrimeNumber) {
+                    answer.push(i);
+                }
+            }
+        // primeNumber(answer);
+        
+        console.log(answer)
+        return answer;
+    }
+    solution(1,2,3,4);
+    </script>
+</body>
+</html>
